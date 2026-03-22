@@ -1,9 +1,9 @@
 # Trauma - 2D Camera Shake Plugin for Godot
 
 ## Usage:
-1. Add a CameraShake node as a child of your Camera2D.
-2. Call shake(profile) with any ShakeProfile resource.
-3. Or call add_trauma(0..1) for cumulative effects (e.g. per bullet hit).
+1. Add a `CameraShake` node as a child of your Camera2D.
+2. Call `shake(profile)` with any ShakeProfile resource.
+3. Or call `add_trauma(0..1)` for cumulative effects (e.g. per bullet hit).
 
 ## Trauma system:
 - `shake_amount = trauma ^ profile.trauma_exponent`

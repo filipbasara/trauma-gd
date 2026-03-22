@@ -1,3 +1,6 @@
+![Trauma Logo](https://github.com/filipbasara/trauma-gd/blob/main/Trauma.png "Trauma Logo")
+
+
 # Trauma - 2D Camera Shake Plugin for Godot
 
 ## Usage:

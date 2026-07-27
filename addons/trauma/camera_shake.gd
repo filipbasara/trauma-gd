@@ -1,4 +1,5 @@
 @tool
+@icon("uid://cc87qcesxckhs")
 extends Node
 class_name CameraShake
 
@@ -41,12 +42,15 @@ var _noise_time: float = 0.0
 var _elapsed: float = 0.0
 var _expected_duration: float = 0.0
 
-# The offset/rotation we applied last frame — subtracted before reapplying.
+# The offset/rotation we applied last frame, subtracted before reapplying.
 var _applied_offset: Vector2 = Vector2.ZERO
 var _applied_rotation: float = 0.0
 
 var _profile: ShakeProfile
 var _is_shaking: bool = false
+
+# Warn at most once per node about a camera that can't show rotational shake.
+var _warned_ignore_rotation: bool = false
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 
@@ -73,7 +77,24 @@ func shake(profile: ShakeProfile) -> void:
 	_profile = profile
 	_elapsed = 0.0
 	_expected_duration = profile.initial_trauma / maxf(profile.decay_rate, 0.001)
+	_check_ignore_rotation(profile)
 	add_trauma(profile.initial_trauma)
+
+
+## Camera2D.ignore_rotation defaults to true, which makes the camera discard its
+## own rotation, so a profile's rotation_intensity would silently do nothing.
+func _check_ignore_rotation(profile: ShakeProfile) -> void:
+	if _warned_ignore_rotation or not _camera:
+		return
+	if profile.rotation_intensity > 0.0 and _camera.ignore_rotation:
+		_warned_ignore_rotation = true
+		var profile_name := profile.resource_path.get_file()
+		if profile_name.is_empty():
+			profile_name = "profile built at runtime"
+		push_warning(
+			"CameraShake: %s sets rotation_intensity > 0, but Camera2D '%s' has Ignore Rotation enabled, so rotational shake will not be visible. Disable it on the Camera2D."
+			% [profile_name, _camera.name]
+		)
 
 
 func add_trauma(amount: float) -> void:

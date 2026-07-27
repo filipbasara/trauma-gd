@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://addons/camera_shake/icons/CameraShake.svg"
+source_file="res://addons/trauma/icons/CameraShake.svg"
 dest_files=["res://.godot/imported/CameraShake.svg-061bbd89a6fe4ddaa77dfdde90fb39d6.ctex"]
 
 [params]

@@ -2,7 +2,7 @@
 extends Resource
 class_name ShakeProfile
 
-## Drop one of the built-in presets from addons/camera_shake/presets/
+## Drop one of the built-in presets from addons/trauma/presets/
 ## or create your own via File → New Resource → ShakeProfile.
 
 # ── Offset ────────────────────────────────────────────────────────────────────

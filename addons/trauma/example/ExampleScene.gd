@@ -10,11 +10,11 @@ extends Node2D
 @onready var shake: CameraShake = $Camera2D/CameraShake
 
 # Presets loaded from files.
-var preset_explosion: ShakeProfile = preload("res://addons/camera_shake/presets/explosion.tres")
-var preset_earthquake: ShakeProfile = preload("res://addons/camera_shake/presets/earthquake.tres")
-var preset_impact: ShakeProfile    = preload("res://addons/camera_shake/presets/impact.tres")
-var preset_jitter: ShakeProfile    = preload("res://addons/camera_shake/presets/jitter.tres")
-var preset_rumble: ShakeProfile    = preload("res://addons/camera_shake/presets/rumble.tres")
+var preset_explosion: ShakeProfile = preload("res://addons/trauma/presets/explosion.tres")
+var preset_earthquake: ShakeProfile = preload("res://addons/trauma/presets/earthquake.tres")
+var preset_impact: ShakeProfile    = preload("res://addons/trauma/presets/impact.tres")
+var preset_jitter: ShakeProfile    = preload("res://addons/trauma/presets/jitter.tres")
+var preset_rumble: ShakeProfile    = preload("res://addons/trauma/presets/rumble.tres")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):   # Space / Enter
